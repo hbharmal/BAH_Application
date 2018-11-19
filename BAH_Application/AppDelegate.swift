@@ -2,9 +2,10 @@
 //  AppDelegate.swift
 //  BAH_FinalProject_V1
 //
-//  Created by Vadrevu, Anirudh S on 11/16/18.
+//  Created by BAH on 11/16/18.
 //  Copyright © 2018 Vadrevu, Anirudh S. All rights reserved.
 //
+
 
 import UIKit
 import CoreData
@@ -53,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "BAH_FinalProject_V1")
+        let container = NSPersistentContainer(name: "BAH_Application")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

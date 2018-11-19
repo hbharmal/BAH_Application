@@ -10,7 +10,7 @@
 		820860DF219F8D2700BCAED0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820860DE219F8D2700BCAED0 /* AppDelegate.swift */; };
 		820860E1219F8D2700BCAED0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820860E0219F8D2700BCAED0 /* ViewController.swift */; };
 		820860E4219F8D2700BCAED0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 820860E2219F8D2700BCAED0 /* Main.storyboard */; };
-		820860E7219F8D2700BCAED0 /* BAH_FinalProject_V1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 820860E5219F8D2700BCAED0 /* BAH_FinalProject_V1.xcdatamodeld */; };
+		820860E7219F8D2700BCAED0 /* BAH_Application.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 820860E5219F8D2700BCAED0 /* BAH_Application.xcdatamodeld */; };
 		820860E9219F8D2800BCAED0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 820860E8219F8D2800BCAED0 /* Assets.xcassets */; };
 		820860EC219F8D2800BCAED0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 820860EA219F8D2800BCAED0 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -62,7 +62,7 @@
 				820860E8219F8D2800BCAED0 /* Assets.xcassets */,
 				820860EA219F8D2800BCAED0 /* LaunchScreen.storyboard */,
 				820860ED219F8D2800BCAED0 /* Info.plist */,
-				820860E5219F8D2700BCAED0 /* BAH_FinalProject_V1.xcdatamodeld */,
+				820860E5219F8D2700BCAED0 /* BAH_Application.xcdatamodeld */,
 			);
 			path = BAH_Application;
 			sourceTree = "<group>";
@@ -95,11 +95,16 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = "Vadrevu, Anirudh S";
+				ORGANIZATIONNAME = BAH;
 				TargetAttributes = {
 					820860DA219F8D2700BCAED0 = {
 						CreatedOnToolsVersion = 9.4;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -140,7 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				820860E1219F8D2700BCAED0 /* ViewController.swift in Sources */,
-				820860E7219F8D2700BCAED0 /* BAH_FinalProject_V1.xcdatamodeld in Sources */,
+				820860E7219F8D2700BCAED0 /* BAH_Application.xcdatamodeld in Sources */,
 				820860DF219F8D2700BCAED0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,13 +340,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		820860E5219F8D2700BCAED0 /* BAH_FinalProject_V1.xcdatamodeld */ = {
+		820860E5219F8D2700BCAED0 /* BAH_Application.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				820860E6219F8D2700BCAED0 /* BAH_FinalProject_V1.xcdatamodel */,
 			);
 			currentVersion = 820860E6219F8D2700BCAED0 /* BAH_FinalProject_V1.xcdatamodel */;
-			path = BAH_FinalProject_V1.xcdatamodeld;
+			path = BAH_Application.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
