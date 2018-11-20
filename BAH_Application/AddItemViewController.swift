@@ -12,6 +12,7 @@ import Foundation
 class AddItemViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var images: [String] = []
+    var cellIdentifier = "Cell"
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -19,8 +20,6 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
         
         // fetch list of grocery images names and add to images array
         let fileManager = FileManager.default
@@ -28,19 +27,13 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate, UIColle
         let assetURL = bundleURL.appendingPathComponent("GroceryImages.bundle")
         let contents = try! fileManager.contentsOfDirectory(at: assetURL, includingPropertiesForKeys: [URLResourceKey.nameKey, URLResourceKey.isDirectoryKey], options: .skipsHiddenFiles)
         
-        
-        for item in contents {
-            print(item.lastPathComponent);
-            
-        }
-        
         for item in contents {
             let imageNamePre: String = item.lastPathComponent
-            //let imageName = imageNamePre.prefix(imageNamePre.st)
-//            images.append(imageName)
-            
+            let imageName = imageNamePre.prefix(imageNamePre.count - 4)
+            images.append(String(imageName))
         }
         
+        print(images)
         
         
     }
@@ -62,11 +55,14 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate, UIColle
     */
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return images.count 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return GroceryImagesCollectionViewCell.self as! UICollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! GroceryImagesCollectionViewCell
+        let image = images[indexPath.row]
+        cell.addImage(image: image)
+        return cell 
     }
 
 }

@@ -14,7 +14,11 @@ class GroceryImagesCollectionViewCell: UICollectionViewCell {
     
     // add an image to the ImageView associated with the Collection View
     func addImage(image name: String) {
-        groceryItemImageView.image = UIImage(named: name)
+        if let image = UIImage(named: name, in: Bundle(for: GroceryImages.self), compatibleWith: nil) {
+            print(name)
+            self.groceryItemImageView.image = image
+        }
+//        groceryItemImageView?.image = UIImage(named: "bread")
     }
     
 }
