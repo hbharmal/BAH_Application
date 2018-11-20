@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KGB-hh-wm0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KGB-hh-wm0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Add Item View Controller-->
         <scene sceneID="ltq-xd-TlH">
             <objects>
-                <viewController id="wLv-iZ-hcy" sceneMemberID="viewController">
+                <viewController id="wLv-iZ-hcy" customClass="AddItemViewController" customModule="BAH_Application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WEI-OM-4Tf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,6 +25,10 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wire-shopping-cart-cartoon-vector-18209147" translatesAutoresizingMaskIntoConstraints="NO" id="8Ky-gO-SzD">
+                                <rect key="frame" x="148" y="209" width="227" height="206"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KlO-XN-INV">
                                 <rect key="frame" x="0.0" y="64" width="108" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -36,7 +40,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7um-CG-NS7" customClass="GroceryItemsCollectionViewCell" customModule="BAH_Application" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7um-CG-NS7" customClass="GroceryImagesCollectionViewCell" customModule="BAH_Application" customModuleProvider="target">
                                         <rect key="frame" x="9" y="0.0" width="90" height="94"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -50,21 +54,17 @@
                                             </subviews>
                                         </view>
                                         <size key="customSize" width="90" height="94"/>
-                                        <connections>
-                                            <outlet property="groceryItemImageView" destination="Tct-9A-wfJ" id="QIc-HR-KSs"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wire-shopping-cart-cartoon-vector-18209147" translatesAutoresizingMaskIntoConstraints="NO" id="8Ky-gO-SzD">
-                                <rect key="frame" x="148" y="209" width="227" height="206"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="V2h-s9-wWo"/>
                     </view>
                     <navigationItem key="navigationItem" id="CmS-5e-Qp9"/>
+                    <connections>
+                        <outlet property="collectionView" destination="KlO-XN-INV" id="oAL-yn-Lta"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJQ-4b-YlC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

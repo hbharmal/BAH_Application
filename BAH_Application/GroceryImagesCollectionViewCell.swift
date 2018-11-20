@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroceryItemsCollectionViewCell: UICollectionViewCell {
+class GroceryImagesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var groceryItemImageView: UIImageView!
     
