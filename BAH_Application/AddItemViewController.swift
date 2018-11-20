@@ -9,12 +9,18 @@
 import UIKit
 import Foundation
 
-class AddItemViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class AddItemViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
+    
     
     var images: [String] = []
-    var cellIdentifier = "Cell"
+    var collectionCellIdentifier = "Cell"
+    
+    var numberOfItems = 0
+    var tableCellIdentifier = "TableCell"
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var customButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +39,9 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate, UIColle
             images.append(String(imageName))
         }
         
-        print(images)
+        // style the button
+        customButton.layer.borderWidth = 1
+        customButton.layer.borderColor = UIColor.black.cgColor
         
         
     }
@@ -54,15 +62,32 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     */
     
+    // MARK: - CollectionView Functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! GroceryImagesCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier, for: indexPath) as! GroceryImagesCollectionViewCell
         let image = images[indexPath.row]
         cell.addImage(image: image)
         return cell 
+    }
+    
+    // MARK: - TableView Functions
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return numberOfItems
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableCellIdentifier, for: indexPath)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Items in List"
     }
 
 }
