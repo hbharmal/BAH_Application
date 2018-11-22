@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class AddItemViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
+class AddItemViewController: UIViewController, UICollectionViewDelegate ,UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
     
     
     var images: [String] = []
@@ -71,7 +71,16 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate, UIColle
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier, for: indexPath) as! GroceryImagesCollectionViewCell
         let image = images[indexPath.row]
         cell.addImage(image: image)
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.cornerRadius = 10
+        cell.isSelected = false
         return cell 
+    }
+    
+    // add spacing between cells in collection view
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
     }
     
     // MARK: - TableView Functions
@@ -86,8 +95,16 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate, UIColle
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Items in List"
+    // header on the table view with current items on list 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
+        label.backgroundColor = UIColor.lightGray
+        label.textAlignment = .center
+        label.text = "Items in List"
+        view.addSubview(label)
+        label.center = view.center
+        return view
     }
 
 }
