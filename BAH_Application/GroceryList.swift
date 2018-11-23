@@ -12,5 +12,6 @@ import CoreData
 
 @objc(GroceryList)
 public class GroceryList: NSManagedObject {
-
+    // implement custom methods here
+    
 }

@@ -12,5 +12,6 @@ import CoreData
 
 @objc(Item)
 public class Item: NSManagedObject {
-
+    // Implement custom methods here
+    
 }

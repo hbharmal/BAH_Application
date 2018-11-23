@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     lazy var managedObjectModel: NSManagedObjectModel = {
-        let modelURL = Bundle.main.url(forResource: "CoreDataDemo", withExtension: "momd")!
+        let modelURL = Bundle.main.url(forResource: "BAH_Application", withExtension: "momd")!
         return NSManagedObjectModel(contentsOf: modelURL)!
     }()
     

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6027E7EB21A3CAB700887BCB /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6027E7EA21A3CAB700887BCB /* AddItemViewController.swift */; };
 		820860DF219F8D2700BCAED0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820860DE219F8D2700BCAED0 /* AppDelegate.swift */; };
-		820860E1219F8D2700BCAED0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820860E0219F8D2700BCAED0 /* ViewController.swift */; };
+		820860E1219F8D2700BCAED0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820860E0219F8D2700BCAED0 /* MainViewController.swift */; };
 		820860E4219F8D2700BCAED0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 820860E2219F8D2700BCAED0 /* Main.storyboard */; };
 		820860E7219F8D2700BCAED0 /* BAH_Application.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 820860E5219F8D2700BCAED0 /* BAH_Application.xcdatamodeld */; };
 		820860E9219F8D2800BCAED0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 820860E8219F8D2800BCAED0 /* Assets.xcassets */; };
@@ -28,7 +28,7 @@
 		6027E7EA21A3CAB700887BCB /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		820860DB219F8D2700BCAED0 /* BAH_Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAH_Application.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		820860DE219F8D2700BCAED0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		820860E0219F8D2700BCAED0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		820860E0219F8D2700BCAED0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		820860E3219F8D2700BCAED0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		820860E6219F8D2700BCAED0 /* BAH_FinalProject_V1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BAH_FinalProject_V1.xcdatamodel; sourceTree = "<group>"; };
 		820860E8219F8D2800BCAED0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 				CC0F305921A69A6A0099EBBA /* Item.swift */,
 				CC0F305A21A69A6A0099EBBA /* Item+CoreDataProperties.swift */,
 				820860DE219F8D2700BCAED0 /* AppDelegate.swift */,
-				820860E0219F8D2700BCAED0 /* ViewController.swift */,
+				820860E0219F8D2700BCAED0 /* MainViewController.swift */,
 				820860E2219F8D2700BCAED0 /* Main.storyboard */,
 				CC0F306121A6A1400099EBBA /* CustomItemViewController.swift */,
 				820860E8219F8D2800BCAED0 /* Assets.xcassets */,
@@ -173,7 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6027E7EB21A3CAB700887BCB /* AddItemViewController.swift in Sources */,
-				820860E1219F8D2700BCAED0 /* ViewController.swift in Sources */,
+				820860E1219F8D2700BCAED0 /* MainViewController.swift in Sources */,
 				820860E7219F8D2700BCAED0 /* BAH_Application.xcdatamodeld in Sources */,
 				CC0F305C21A69A6A0099EBBA /* GroceryList+CoreDataProperties.swift in Sources */,
 				820860DF219F8D2700BCAED0 /* AppDelegate.swift in Sources */,
@@ -327,7 +327,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BAH_Application/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cs329e;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -342,7 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BAH_Application/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cs329e;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -12,8 +12,14 @@ import Foundation
 class AddItemViewController: UIViewController, UICollectionViewDelegate ,UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
     
     
+    
+    @IBOutlet weak var groceryTitleLabel: UILabel!
+    
+    
     var images: [String] = []
+    var groceryList: GroceryList?
     var collectionCellIdentifier = "Cell"
+    
     
     var numberOfItems = 0
     var tableCellIdentifier = "TableCell"
@@ -26,6 +32,7 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate ,UIColle
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        print(groceryList?.groceryListName)
         
         // fetch list of grocery images names and add to images array
         let fileManager = FileManager.default
