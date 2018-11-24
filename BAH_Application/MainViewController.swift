@@ -58,7 +58,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.title = "My Grocery Lists"
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedObjectContext = appDelegate.managedObjectContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "GroceryList")
@@ -80,6 +82,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationViewController = segue.destination as? AddItemViewController {
+            if let cell = sender as? UITableViewCell {
+                if let indexPath = self.groceryListTableView.indexPath(for: cell) {
+                    destinationViewController.groceryList = groceryLists[indexPath.row]
+                }
+            }
+        }
+        if let destinationViewController = segue.destination as? GroceryListViewController {
             if let cell = sender as? UITableViewCell {
                 if let indexPath = self.groceryListTableView.indexPath(for: cell) {
                     destinationViewController.groceryList = groceryLists[indexPath.row]

@@ -7,18 +7,51 @@
 //
 
 import UIKit
-import Foundation 
-
-var categories = Globals.categories
-var selectedCategory: String?
+import Foundation
+import CoreData
 
 class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    var groceryList: GroceryList?
+    var selectedCatagory: String?
+    var categories = Globals.categories
+    var shouldPerform: Bool = false
     
     @IBOutlet weak var categoriesPickerView: UIPickerView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addCustomItemButton: UIButton!
+    
     @IBAction func addItemAction(_ sender: Any) {
-        print("yes")
+        let message: String = "Please enter some text"
+        if (self.nameTextField.text == "") {
+            let alert = UIAlertController(title: "Try Again", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            shouldPerform = true
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let managedObjectContext = appDelegate.managedObjectContext
+            guard let entity = NSEntityDescription.entity(forEntityName: "Item", in: managedObjectContext) else {
+                fatalError("Could not load entity!")
+            }
+            
+            // make new item object
+            let item = Item(entity: entity, insertInto: managedObjectContext)
+            item.itemCategory = self.selectedCatagory
+            item.itemName = self.nameTextField.text
+            item.list = self.groceryList
+            
+            groceryList?.addToItems(item)
+            
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+            
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     override func viewDidLoad() {
@@ -34,12 +67,14 @@ class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//     In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        print("sent")
+//        if let destinationViewController = segue.destination as? AddItemViewController {
+//            destinationViewController.groceryList = self.groceryList
+//        }
+        print("YES")
     }
+
     
     // MARK: - UIPickerView
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -56,7 +91,7 @@ class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickerView.view(forRow: row, forComponent: component)?.backgroundColor = UIColor.lightGray
-        selectedCategory = categories[row]
+        selectedCatagory = categories[row]
     }
     
 //    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

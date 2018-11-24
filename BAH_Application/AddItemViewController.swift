@@ -11,17 +11,13 @@ import Foundation
 
 class AddItemViewController: UIViewController, UICollectionViewDelegate ,UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
     
-    
-    
     @IBOutlet weak var groceryTitleLabel: UILabel!
-    
     
     var images: [String] = []
     var groceryList: GroceryList?
     var collectionCellIdentifier = "Cell"
     
-    
-    var numberOfItems = 0
+    var items: [Item] = []
     var tableCellIdentifier = "TableCell"
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -32,7 +28,9 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate ,UIColle
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        print(groceryList?.groceryListName)
+        
+        // add title to main screen
+        groceryTitleLabel.text = groceryList?.groceryListName
         
         // fetch list of grocery images names and add to images array
         let fileManager = FileManager.default
@@ -50,7 +48,14 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate ,UIColle
         customButton.layer.borderWidth = 1
         customButton.layer.borderColor = UIColor.black.cgColor
         
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // fetch items for GroceryList object
+        if (groceryList?.items != nil) {
+            items = groceryList!.items?.allObjects as! [Item]
+        }
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,15 +64,14 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate ,UIColle
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let destinationViewController = segue.destination as? CustomItemViewController {
+            destinationViewController.groceryList = self.groceryList
+        }
     }
-    */
     
     // MARK: - CollectionView Functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -92,13 +96,12 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate ,UIColle
     
     // MARK: - TableView Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfItems
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: tableCellIdentifier, for: indexPath)
-        
+        cell.textLabel?.text = items[indexPath.row].itemName
         return cell
     }
     

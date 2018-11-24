@@ -21,6 +21,8 @@
 		CC0F305E21A69A6A0099EBBA /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F305A21A69A6A0099EBBA /* Item+CoreDataProperties.swift */; };
 		CC0F306021A69DEE0099EBBA /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F305F21A69DEE0099EBBA /* Globals.swift */; };
 		CC0F306221A6A1400099EBBA /* CustomItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F306121A6A1400099EBBA /* CustomItemViewController.swift */; };
+		CC0F306421AA09670099EBBA /* GroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F306321AA09670099EBBA /* GroceryListViewController.swift */; };
+		CC0F306621AA0F7A0099EBBA /* GroceryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F306521AA0F7A0099EBBA /* GroceryListTableViewCell.swift */; };
 		CC9F24DA21A399A8002D5240 /* GroceryImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F24D921A399A8002D5240 /* GroceryImagesCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		CC0F305A21A69A6A0099EBBA /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CC0F305F21A69DEE0099EBBA /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		CC0F306121A6A1400099EBBA /* CustomItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomItemViewController.swift; sourceTree = "<group>"; };
+		CC0F306321AA09670099EBBA /* GroceryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListViewController.swift; sourceTree = "<group>"; };
+		CC0F306521AA0F7A0099EBBA /* GroceryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewCell.swift; sourceTree = "<group>"; };
 		CC9F24D921A399A8002D5240 /* GroceryImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +94,8 @@
 				CC9F24D921A399A8002D5240 /* GroceryImagesCollectionViewCell.swift */,
 				6027E7EA21A3CAB700887BCB /* AddItemViewController.swift */,
 				CC0F305F21A69DEE0099EBBA /* Globals.swift */,
+				CC0F306321AA09670099EBBA /* GroceryListViewController.swift */,
+				CC0F306521AA0F7A0099EBBA /* GroceryListTableViewCell.swift */,
 			);
 			path = BAH_Application;
 			sourceTree = "<group>";
@@ -174,12 +180,14 @@
 			files = (
 				6027E7EB21A3CAB700887BCB /* AddItemViewController.swift in Sources */,
 				820860E1219F8D2700BCAED0 /* MainViewController.swift in Sources */,
+				CC0F306621AA0F7A0099EBBA /* GroceryListTableViewCell.swift in Sources */,
 				820860E7219F8D2700BCAED0 /* BAH_Application.xcdatamodeld in Sources */,
 				CC0F305C21A69A6A0099EBBA /* GroceryList+CoreDataProperties.swift in Sources */,
 				820860DF219F8D2700BCAED0 /* AppDelegate.swift in Sources */,
 				CC9F24DA21A399A8002D5240 /* GroceryImagesCollectionViewCell.swift in Sources */,
 				CC0F306221A6A1400099EBBA /* CustomItemViewController.swift in Sources */,
 				CC0F305E21A69A6A0099EBBA /* Item+CoreDataProperties.swift in Sources */,
+				CC0F306421AA09670099EBBA /* GroceryListViewController.swift in Sources */,
 				CC0F306021A69DEE0099EBBA /* Globals.swift in Sources */,
 				CC0F305D21A69A6A0099EBBA /* Item.swift in Sources */,
 				CC0F305B21A69A6A0099EBBA /* GroceryList.swift in Sources */,
