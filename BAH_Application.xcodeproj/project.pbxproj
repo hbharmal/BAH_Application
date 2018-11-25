@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6027E7EB21A3CAB700887BCB /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6027E7EA21A3CAB700887BCB /* AddItemViewController.swift */; };
+		60BAA36E21AA4FB40049DC25 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BAA36D21AA4FB40049DC25 /* MapViewController.swift */; };
 		820860DF219F8D2700BCAED0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820860DE219F8D2700BCAED0 /* AppDelegate.swift */; };
 		820860E1219F8D2700BCAED0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820860E0219F8D2700BCAED0 /* MainViewController.swift */; };
 		820860E4219F8D2700BCAED0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 820860E2219F8D2700BCAED0 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		6027E7EA21A3CAB700887BCB /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		60BAA36D21AA4FB40049DC25 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		820860DB219F8D2700BCAED0 /* BAH_Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAH_Application.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		820860DE219F8D2700BCAED0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		820860E0219F8D2700BCAED0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				820860DE219F8D2700BCAED0 /* AppDelegate.swift */,
 				820860E0219F8D2700BCAED0 /* MainViewController.swift */,
 				820860E2219F8D2700BCAED0 /* Main.storyboard */,
+				60BAA36D21AA4FB40049DC25 /* MapViewController.swift */,
 				CC0F306121A6A1400099EBBA /* CustomItemViewController.swift */,
 				820860E8219F8D2800BCAED0 /* Assets.xcassets */,
 				820860EA219F8D2800BCAED0 /* LaunchScreen.storyboard */,
@@ -191,6 +194,7 @@
 				CC0F306021A69DEE0099EBBA /* Globals.swift in Sources */,
 				CC0F305D21A69A6A0099EBBA /* Item.swift in Sources */,
 				CC0F305B21A69A6A0099EBBA /* GroceryList.swift in Sources */,
+				60BAA36E21AA4FB40049DC25 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

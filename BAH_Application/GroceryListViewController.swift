@@ -8,21 +8,21 @@
 
 import UIKit
 
-class GroceryListViewController: UIViewController {
+class GroceryListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var groceryList: GroceryList?
     var items: [Item] = []
+    var identifier = "itemCell"
 
     @IBOutlet weak var groceryTitleLabel: UILabel!
+    @IBOutlet weak var groceryItemsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-        groceryTitleLabel.text = groceryList?.groceryListName
+        groceryTitleLabel.text = (groceryList?.groceryListName)! + " List"
         groceryTitleLabel.baselineAdjustment = .alignCenters
         
-        self.navigationController?.isToolbarHidden =  false 
         
     }
 
@@ -32,21 +32,53 @@ class GroceryListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("view will appear triggered")
         // fetch items for GroceryList object
         if (groceryList?.items != nil) {
             items = groceryList!.items?.allObjects as! [Item]
         }
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.setToolbarHidden(false, animated: true)
+        self.groceryItemsTableView.reloadData()
+    }
+    
+    // MARK: - Scroll View
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        if (velocity.y > 0) {
+            UIView.animate(withDuration: 2.5, delay: 0, options: UIViewAnimationOptions(), animations: {
+                self.navigationController?.setNavigationBarHidden(true, animated: true)
+                self.navigationController?.setToolbarHidden(true, animated: true)
+            }, completion: nil)
+            
+        } else {
+            UIView.animate(withDuration: 2.5, delay: 0, options: UIViewAnimationOptions(), animations: {
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
+                self.navigationController?.setToolbarHidden(false, animated: true)
+            }, completion: nil)
+        }
     }
     
 
-    /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let destinationController = segue.destination as? AddItemViewController {
+            destinationController.groceryList = self.groceryList
+        }
     }
-    */
+    
+    // MARK: - TableView Delegate
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.groceryItemsTableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        cell.textLabel?.text = items[indexPath.row].itemName
+        return cell
+    }
 
 }

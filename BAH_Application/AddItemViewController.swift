@@ -28,9 +28,10 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate ,UIColle
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.navigationController?.toolbar.isHidden = true 
         
         // add title to main screen
-        groceryTitleLabel.text = groceryList?.groceryListName
+        groceryTitleLabel.text = (groceryList?.groceryListName)! + " List"
         
         // fetch list of grocery images names and add to images array
         let fileManager = FileManager.default
@@ -63,7 +64,10 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate ,UIColle
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func onUpdateList(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
