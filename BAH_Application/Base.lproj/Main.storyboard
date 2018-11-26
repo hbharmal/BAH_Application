@@ -308,26 +308,32 @@
             </objects>
             <point key="canvasLocation" x="2721" y="436"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="dGd-Xn-Nkx">
             <objects>
-                <viewController id="c0x-Yv-jBM" sceneMemberID="viewController">
+                <viewController id="c0x-Yv-jBM" customClass="MapViewController" customModule="BAH_Application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bU7-wg-kYp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="L06-N5-HEB">
-                                <rect key="frame" x="33" y="114" width="308" height="299"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="349"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="c0x-Yv-jBM" id="6hV-7I-bgZ"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bvt-S9-f4x"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="L06-N5-HEB" id="3M0-7F-PZL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8f-CS-077" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1897" y="436"/>
+            <point key="canvasLocation" x="1896.8" y="435.83208395802103"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NaC-tM-QoR">
