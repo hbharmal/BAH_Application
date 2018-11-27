@@ -46,8 +46,8 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate ,UIColle
         }
         
         // style the button
-        customButton.layer.borderWidth = 1
-        customButton.layer.borderColor = UIColor.black.cgColor
+        //customButton.layer.borderWidth = 1
+        //customButton.layer.borderColor = UIColor.black.cgColor
         
     }
     
