@@ -3,7 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
+<<<<<<< HEAD
 	<string>I would like to know where you are when I&apos;m in use!</string>
+=======
+	<string>I would like to know where you are when I&apos;m in use</string>
+>>>>>>> d485c3060d85019549c409701498bcf4d58e261e
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>CFBundleDevelopmentRegion</key>

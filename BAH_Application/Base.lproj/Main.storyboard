@@ -22,8 +22,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< HEAD
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KlO-XN-INV">
                                 <rect key="frame" x="0.0" y="80" width="84" height="543"/>
+=======
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KlO-XN-INV">
+                                <rect key="frame" x="0.0" y="130" width="84" height="493"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+>>>>>>> d485c3060d85019549c409701498bcf4d58e261e
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bdj-1i-5q3">
                                     <size key="itemSize" width="71" height="75"/>
@@ -58,8 +64,14 @@
                                     <outlet property="delegate" destination="wLv-iZ-hcy" id="bdw-3k-Lkr"/>
                                 </connections>
                             </collectionView>
+<<<<<<< HEAD
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6G0-b0-9Zc">
                                 <rect key="frame" x="119" y="323" width="240" height="300"/>
+=======
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6G0-b0-9Zc">
+                                <rect key="frame" x="119" y="323" width="240" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+>>>>>>> d485c3060d85019549c409701498bcf4d58e261e
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableCell" id="kWn-rj-C3z">
@@ -76,20 +88,41 @@
                                     <outlet property="delegate" destination="wLv-iZ-hcy" id="nrN-cO-K7g"/>
                                 </connections>
                             </tableView>
+<<<<<<< HEAD
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVF-Ko-bOx">
                                 <rect key="frame" x="16" y="624" width="119" height="30"/>
+=======
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVF-Ko-bOx">
+                                <rect key="frame" x="16" y="624" width="159" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+>>>>>>> d485c3060d85019549c409701498bcf4d58e261e
                                 <state key="normal" title="Add Custom Item"/>
                                 <connections>
                                     <segue destination="tlQ-YE-4mV" kind="push" id="xus-so-9cK"/>
                                 </connections>
                             </button>
+<<<<<<< HEAD
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiU-oX-4hd">
                                 <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+=======
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hn3-gW-HAr">
+                                <rect key="frame" x="176" y="624" width="180" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Update List"/>
+                                <connections>
+                                    <action selector="onUpdateList:" destination="wLv-iZ-hcy" eventType="touchUpInside" id="h3K-S0-EQK"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiU-oX-4hd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+>>>>>>> d485c3060d85019549c409701498bcf4d58e261e
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10802706866197183" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+<<<<<<< HEAD
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="wire-shopping-cart-cartoon-vector-18209147" translatesAutoresizingMaskIntoConstraints="NO" id="8Ky-gO-SzD">
                                 <rect key="frame" x="145" y="146" width="188" height="132"/>
                             </imageView>
@@ -122,6 +155,14 @@
                             <constraint firstItem="hn3-gW-HAr" firstAttribute="top" secondItem="6G0-b0-9Zc" secondAttribute="bottom" constant="1" id="v53-TE-5cK"/>
                             <constraint firstItem="V2h-s9-wWo" firstAttribute="bottom" secondItem="fVF-Ko-bOx" secondAttribute="bottom" constant="13" id="xV1-pW-yb8"/>
                         </constraints>
+=======
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wire-shopping-cart-cartoon-vector-18209147" translatesAutoresizingMaskIntoConstraints="NO" id="8Ky-gO-SzD">
+                                <rect key="frame" x="145" y="146" width="188" height="132"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+>>>>>>> d485c3060d85019549c409701498bcf4d58e261e
                         <viewLayoutGuide key="safeArea" id="V2h-s9-wWo"/>
                     </view>
                     <navigationItem key="navigationItem" id="CmS-5e-Qp9"/>
@@ -330,11 +371,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< HEAD
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="L06-N5-HEB">
                                 <rect key="frame" x="0.0" y="64" width="375" height="349"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="c0x-Yv-jBM" id="6hV-7I-bgZ"/>
+=======
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L06-N5-HEB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="349"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="c0x-Yv-jBM" id="rwH-ld-QEU"/>
+>>>>>>> d485c3060d85019549c409701498bcf4d58e261e
                                 </connections>
                             </mapView>
                         </subviews>
@@ -342,7 +391,11 @@
                         <viewLayoutGuide key="safeArea" id="bvt-S9-f4x"/>
                     </view>
                     <connections>
+<<<<<<< HEAD
                         <outlet property="mapView" destination="L06-N5-HEB" id="3M0-7F-PZL"/>
+=======
+                        <outlet property="myMapView" destination="L06-N5-HEB" id="kkV-oQ-ept"/>
+>>>>>>> d485c3060d85019549c409701498bcf4d58e261e
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8f-CS-077" userLabel="First Responder" sceneMemberID="firstResponder"/>
