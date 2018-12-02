@@ -12,6 +12,7 @@ import Foundation
 class AddItemViewController: UIViewController, UICollectionViewDelegate ,UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var groceryTitleLabel: UILabel!
+    @IBOutlet weak var shoppingCartImageView: UIImageView!
     
     var images: [String] = []
     var groceryList: GroceryList?
@@ -122,3 +123,13 @@ class AddItemViewController: UIViewController, UICollectionViewDelegate ,UIColle
     }
 
 }
+
+// add drag drop functionality here
+//extension AddItemViewController: UIDragInteractionDelegate, UIDropInteractionDelegate {
+//    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
+//        <#code#>
+//    }
+//
+//
+//}
+

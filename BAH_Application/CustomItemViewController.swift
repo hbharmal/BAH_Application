@@ -20,6 +20,9 @@ class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var categoriesPickerView: UIPickerView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addCustomItemButton: UIButton!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    
     
     @IBAction func addItemAction(_ sender: Any) {
         let message: String = "Please enter some text"
@@ -58,6 +61,16 @@ class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.categoriesPickerView.layer.borderColor = UIColor.black.cgColor
+        self.categoriesPickerView.layer.borderWidth = 2
+        self.categoriesPickerView.layer.cornerRadius = 15
+        
+        self.nameTextField.layer.borderColor = UIColor.black.cgColor
+        self.nameTextField.layer.borderWidth = 2
+        self.nameTextField.layer.cornerRadius = 15
+        
+        self.categoryLabel.layer.cornerRadius = 15
+        self.nameLabel.layer.cornerRadius = 15
     }
 
     override func didReceiveMemoryWarning() {
