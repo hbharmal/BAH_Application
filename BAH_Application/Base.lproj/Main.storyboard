@@ -7,6 +7,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -256,13 +257,41 @@
                                 <rect key="frame" x="0.0" y="109" width="375" height="514"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="46" id="d4a-4Q-HGN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="46" id="d4a-4Q-HGN" customClass="GroceryItemTableViewCell" customModule="BAH_Application" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d4a-4Q-HGN" id="l4f-Ll-lzA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="45.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wI-tc-2eO">
+                                                    <rect key="frame" x="333" y="7" width="32" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="RiM-Qx-PRx"/>
+                                                        <constraint firstAttribute="width" constant="32" id="VtM-CU-csd"/>
+                                                    </constraints>
+                                                    <state key="normal" image="unchecked"/>
+                                                    <state key="selected" image="checked"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPF-iF-fsq">
+                                                    <rect key="frame" x="15" y="10" width="310" height="26.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="2wI-tc-2eO" secondAttribute="trailing" constant="10" id="6K7-3T-nu6"/>
+                                                <constraint firstItem="JPF-iF-fsq" firstAttribute="leading" secondItem="l4f-Ll-lzA" secondAttribute="leadingMargin" id="Bav-Kn-cba"/>
+                                                <constraint firstItem="2wI-tc-2eO" firstAttribute="leading" secondItem="JPF-iF-fsq" secondAttribute="trailing" constant="8" id="EZQ-zn-C1D"/>
+                                                <constraint firstItem="2wI-tc-2eO" firstAttribute="centerY" secondItem="l4f-Ll-lzA" secondAttribute="centerY" id="ZR3-o3-Vcn"/>
+                                                <constraint firstItem="JPF-iF-fsq" firstAttribute="centerY" secondItem="l4f-Ll-lzA" secondAttribute="centerY" id="wOn-l6-d1w"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkItemButton" destination="2wI-tc-2eO" id="7aj-Vz-ikR"/>
+                                            <outlet property="groceryItemLabel" destination="JPF-iF-fsq" id="czi-eF-QYA"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -315,27 +344,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wT3-ap-bmL">
-                                <rect key="frame" x="97" y="163" width="180" height="216"/>
+                                <rect key="frame" x="97" y="163" width="182" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="tlQ-YE-4mV" id="ivV-lU-ziN"/>
                                     <outlet property="delegate" destination="tlQ-YE-4mV" id="0Sl-2y-GCb"/>
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="esu-pd-KYL">
-                                <rect key="frame" x="147" y="503" width="80" height="30"/>
+                                <rect key="frame" x="147" y="503" width="82" height="30"/>
                                 <state key="normal" title="Add Item"/>
                                 <connections>
                                     <action selector="addItemAction:" destination="tlQ-YE-4mV" eventType="touchUpInside" id="FSx-3m-6xO"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uvg-j7-wSQ">
-                                <rect key="frame" x="97" y="445.5" width="180" height="30"/>
+                                <rect key="frame" x="97" y="445.5" width="182" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIG-Ce-qab">
-                                <rect key="frame" x="133" y="402" width="108" height="35"/>
+                                <rect key="frame" x="133" y="402" width="110" height="35"/>
                                 <color key="backgroundColor" red="0.99607843137254903" green="0.15686274509803921" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="sWJ-Uq-twR"/>
@@ -346,7 +375,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRX-ol-bP2">
-                                <rect key="frame" x="133" y="134" width="108" height="40"/>
+                                <rect key="frame" x="133" y="134" width="110" height="40"/>
                                 <color key="backgroundColor" red="0.99607843139999996" green="0.15686274510000001" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="TNF-Sc-vgC"/>
@@ -493,6 +522,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checked" width="32" height="32"/>
+        <image name="unchecked" width="32" height="32"/>
         <image name="wire-shopping-cart-cartoon-vector-18209147" width="1000" height="963"/>
     </resources>
 </document>

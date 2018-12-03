@@ -2,7 +2,7 @@
 //  Item+CoreDataProperties.swift
 //  BAH_Application
 //
-//  Created by Hussain Bharmal on 11/22/18.
+//  Created by Hussain Bharmal on 12/3/18.
 //  Copyright © 2018 BAH. All rights reserved.
 //
 //
@@ -19,6 +19,7 @@ extension Item {
 
     @NSManaged public var itemCategory: String?
     @NSManaged public var itemName: String?
+    @NSManaged public var isSelected: Bool
     @NSManaged public var list: GroceryList?
 
 }

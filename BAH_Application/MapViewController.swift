@@ -132,15 +132,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     // MARK: - MapView Delegate
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let reuseId = "pin"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-        pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+        if annotation is MKUserLocation {
+            return nil
+        }
+        let identifier = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+        pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         pinView?.pinTintColor = UIColor.orange
         pinView?.canShowCallout = true
         let smallSquare = CGSize(width: 30, height: 30)
         let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: smallSquare))
         button.setBackgroundImage(UIImage(named: "car"), for: .normal)
-        button.addTarget(self, action: "getDirections", for: .touchUpInside)
+        button.addTarget(self, action: #selector(getDirections), for: .touchUpInside)
         pinView?.leftCalloutAccessoryView = button
         return pinView
     }
@@ -149,7 +152,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         for item in matchingItems {
             if item.name == view.annotation?.title! {
                 selectedPin = item.placemark
-                print(selectedPin?.name)
             }
         }
     }
@@ -177,10 +179,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let selectedItem = self.matchingItems[indexPath.row].placemark
-//
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let placemark = matchingItems[indexPath.row].placemark
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
+        self.myMapView.setRegion(region, animated: true)
+        for annotation in self.myMapView.annotations {
+            if annotation.title! != placemark.name {
+                self.myMapView.view(for: annotation)?.alpha = 0.3
+            } else {
+                self.myMapView.view(for: annotation)?.alpha = 1.0
+            }
+        }
+        
+    }
     
 
 }

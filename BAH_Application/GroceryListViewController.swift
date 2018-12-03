@@ -23,7 +23,6 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         groceryTitleLabel.text = (groceryList?.groceryListName)! + " List"
         groceryTitleLabel.baselineAdjustment = .alignCenters
         
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +39,9 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.setToolbarHidden(false, animated: true)
         self.groceryItemsTableView.reloadData()
+        for item in items {
+            print(item.isSelected)
+        }
     }
     
     // MARK: - Scroll View
@@ -76,9 +78,38 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.groceryItemsTableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        cell.textLabel?.text = items[indexPath.row].itemName
+        
+        let cell = self.groceryItemsTableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! GroceryItemTableViewCell
+        cell.groceryItemLabel.text = items[indexPath.row].itemName
+        cell.selectionStyle = .none
+        cell.checkItemButton.isSelected = items[indexPath.row].isSelected
+        cell.checkItemButton.addTarget(self, action: #selector(checkMarkButtonClicked(sender:)), for: .touchUpInside)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 71
+    }
+    
+    
+    
+    // MARK: - Objc function
+    @objc func checkMarkButtonClicked(sender: UIButton) {
+        if (sender.isSelected) {
+            sender.isSelected = false
+            if let cell = sender.superview?.superview as? UITableViewCell {
+                if let indexPath = self.groceryItemsTableView.indexPath(for: cell) {
+                    items[indexPath.row].isSelected = false
+                }
+            }
+        } else {
+            if let cell = sender.superview?.superview as? UITableViewCell {
+                if let indexPath = self.groceryItemsTableView.indexPath(for: cell) {
+                    items[indexPath.row].isSelected = true
+                }
+            }
+            sender.isSelected = true
+        }
     }
 
 }

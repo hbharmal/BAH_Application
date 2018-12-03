@@ -44,6 +44,7 @@ class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
             item.itemCategory = self.selectedCatagory
             item.itemName = self.nameTextField.text
             item.list = self.groceryList
+            item.isSelected = false
             
             groceryList?.addToItems(item)
             
