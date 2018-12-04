@@ -16,12 +16,17 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
 
     @IBOutlet weak var groceryTitleLabel: UILabel!
     @IBOutlet weak var groceryItemsTableView: UITableView!
+    @IBOutlet weak var proteinLabel: UILabel!
+    @IBOutlet weak var carbsLabel: UILabel!
+    @IBOutlet weak var fatLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         groceryTitleLabel.text = (groceryList?.groceryListName)! + " List"
         groceryTitleLabel.baselineAdjustment = .alignCenters
+        
+        self.createNutritionLabels()
         
     }
 
@@ -110,6 +115,25 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
             }
             sender.isSelected = true
         }
+    }
+    
+    // MARK: - Nutrition Labels
+    func createNutritionLabels() {
+        self.proteinLabel.backgroundColor = UIColor.blue
+        self.carbsLabel.backgroundColor = UIColor.green
+        self.fatLabel.backgroundColor = UIColor.red
+        
+        // first check if item list is empty
+        if (items.count == 0 || items == nil) {
+            self.proteinLabel.text = "0% Protein"
+            self.carbsLabel.text = "0% Carbs"
+            self.fatLabel.text = "0% Fat"
+        } else {
+            self.proteinLabel.text = "0% Protein"
+            self.carbsLabel.text = "0% Carbs"
+            self.fatLabel.text = "0% Fat"
+        }
+        
     }
 
 }
