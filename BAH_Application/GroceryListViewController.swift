@@ -12,7 +12,8 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     
     var groceryList: GroceryList?
     var items: [Item] = []
-    var identifier = "itemCell"
+    let identifier = "itemCell"
+    let cellSpacingHeight: CGFloat = 5
 
     @IBOutlet weak var groceryTitleLabel: UILabel!
     @IBOutlet weak var groceryItemsTableView: UITableView!
@@ -79,15 +80,31 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     
     // MARK: - TableView Delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.groceryItemsTableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! GroceryItemTableViewCell
-        cell.groceryItemLabel.text = items[indexPath.row].itemName
+        
+        // UI tweeks
+        cell.backgroundColor = UIColor.white
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 8
+        cell.clipsToBounds = true
+        
+        cell.groceryItemLabel.text = items[indexPath.section].itemName
         cell.selectionStyle = .none
-        cell.checkItemButton.isSelected = items[indexPath.row].isSelected
+        cell.checkItemButton.isSelected = items[indexPath.section].isSelected
         cell.checkItemButton.addTarget(self, action: #selector(checkMarkButtonClicked(sender:)), for: .touchUpInside)
         return cell
     }
@@ -96,21 +113,19 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         return 71
     }
     
-    
-    
     // MARK: - Objc function
     @objc func checkMarkButtonClicked(sender: UIButton) {
         if (sender.isSelected) {
             sender.isSelected = false
             if let cell = sender.superview?.superview as? UITableViewCell {
                 if let indexPath = self.groceryItemsTableView.indexPath(for: cell) {
-                    items[indexPath.row].isSelected = false
+                    items[indexPath.section].isSelected = false
                 }
             }
         } else {
             if let cell = sender.superview?.superview as? UITableViewCell {
                 if let indexPath = self.groceryItemsTableView.indexPath(for: cell) {
-                    items[indexPath.row].isSelected = true
+                    items[indexPath.section].isSelected = true
                 }
             }
             sender.isSelected = true

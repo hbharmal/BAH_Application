@@ -21,6 +21,8 @@
 		CC0F306421AA09670099EBBA /* GroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F306321AA09670099EBBA /* GroceryListViewController.swift */; };
 		CC0F306621AA0F7A0099EBBA /* GroceryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F306521AA0F7A0099EBBA /* GroceryListTableViewCell.swift */; };
 		CC9F24DA21A399A8002D5240 /* GroceryImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F24D921A399A8002D5240 /* GroceryImagesCollectionViewCell.swift */; };
+		CCA2AA9321B65E7500E61B12 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA2AA9221B65E7500E61B12 /* AddButton.swift */; };
+		CCA2AA9521B79D0A00E61B12 /* NutritionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA2AA9421B79D0A00E61B12 /* NutritionsAPI.swift */; };
 		CCF8324121B4C4D70012026F /* GroceryItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF8324021B4C4D70012026F /* GroceryItemTableViewCell.swift */; };
 		CCF8324621B598840012026F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF8324221B598840012026F /* Item.swift */; };
 		CCF8324721B598840012026F /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF8324321B598840012026F /* Item+CoreDataProperties.swift */; };
@@ -45,6 +47,8 @@
 		CC0F306321AA09670099EBBA /* GroceryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListViewController.swift; sourceTree = "<group>"; };
 		CC0F306521AA0F7A0099EBBA /* GroceryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewCell.swift; sourceTree = "<group>"; };
 		CC9F24D921A399A8002D5240 /* GroceryImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryImagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		CCA2AA9221B65E7500E61B12 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
+		CCA2AA9421B79D0A00E61B12 /* NutritionsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionsAPI.swift; sourceTree = "<group>"; };
 		CCF8324021B4C4D70012026F /* GroceryItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemTableViewCell.swift; sourceTree = "<group>"; };
 		CCF8324221B598840012026F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		CCF8324321B598840012026F /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 				820860DE219F8D2700BCAED0 /* AppDelegate.swift */,
 				820860E0219F8D2700BCAED0 /* MainViewController.swift */,
 				820860E2219F8D2700BCAED0 /* Main.storyboard */,
+				CCA2AA9221B65E7500E61B12 /* AddButton.swift */,
 				60BAA36D21AA4FB40049DC25 /* MapViewController.swift */,
 				CC0F306121A6A1400099EBBA /* CustomItemViewController.swift */,
 				820860E8219F8D2800BCAED0 /* Assets.xcassets */,
@@ -102,6 +107,7 @@
 				CC0F306321AA09670099EBBA /* GroceryListViewController.swift */,
 				CC0F306521AA0F7A0099EBBA /* GroceryListTableViewCell.swift */,
 				CCF8324021B4C4D70012026F /* GroceryItemTableViewCell.swift */,
+				CCA2AA9421B79D0A00E61B12 /* NutritionsAPI.swift */,
 			);
 			path = BAH_Application;
 			sourceTree = "<group>";
@@ -196,9 +202,11 @@
 				CC0F306221A6A1400099EBBA /* CustomItemViewController.swift in Sources */,
 				CC0F306421AA09670099EBBA /* GroceryListViewController.swift in Sources */,
 				CCF8324121B4C4D70012026F /* GroceryItemTableViewCell.swift in Sources */,
+				CCA2AA9521B79D0A00E61B12 /* NutritionsAPI.swift in Sources */,
 				CC0F306021A69DEE0099EBBA /* Globals.swift in Sources */,
 				CCF8324921B598840012026F /* GroceryList+CoreDataProperties.swift in Sources */,
 				60BAA36E21AA4FB40049DC25 /* MapViewController.swift in Sources */,
+				CCA2AA9321B65E7500E61B12 /* AddButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

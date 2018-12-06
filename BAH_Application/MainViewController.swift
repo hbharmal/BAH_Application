@@ -46,9 +46,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("Could not save. \(error), \(error.userInfo)")
         }
         
-        self.groceryListTableView.beginUpdates()
-        self.groceryListTableView.insertRows(at: [IndexPath(row: groceryLists.count - 1, section: 0)], with: .automatic)
-        self.groceryListTableView.endUpdates()
+//        self.groceryListTableView.beginUpdates()
+//        self.groceryListTableView.insertRows(at: [IndexPath(row: 0, section: groceryLists.count - 1)], with: .automatic)
+//        self.groceryListTableView.endUpdates()
+        self.groceryListTableView.reloadData()
         self.groceryListTextField.text = ""
         view.endEditing(true)
         
@@ -84,14 +85,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let destinationViewController = segue.destination as? AddItemViewController {
             if let cell = sender as? UITableViewCell {
                 if let indexPath = self.groceryListTableView.indexPath(for: cell) {
-                    destinationViewController.groceryList = groceryLists[indexPath.row]
+                    destinationViewController.groceryList = groceryLists[indexPath.section]
                 }
             }
         }
         if let destinationViewController = segue.destination as? GroceryListViewController {
             if let cell = sender as? UITableViewCell {
                 if let indexPath = self.groceryListTableView.indexPath(for: cell) {
-                    destinationViewController.groceryList = groceryLists[indexPath.row]
+                    destinationViewController.groceryList = groceryLists[indexPath.section]
                 }
             }
         }
@@ -99,12 +100,34 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - TableView Delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return groceryLists.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5.0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = groceryLists[indexPath.row].groceryListName
+        cell.textLabel?.text = groceryLists[indexPath.section].groceryListName
+        
+        // UI Tweaks
+        cell.textLabel?.font = UIFont(name: "Gill Sans", size: 19.0)
+//        cell.contentView.layer.cornerRadius = 4.0
+//        cell.contentView.layer.borderWidth = 1.0
+//        cell.contentView.layer.borderColor = UIColor.clear.cgColor
+//        cell.contentView.layer.masksToBounds = false
+        cell.layer.shadowColor = UIColor.gray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        cell.layer.shadowRadius = 4.0
+        cell.layer.shadowOpacity = 1.0
+        cell.layer.masksToBounds = false
+        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
+        cell.selectionStyle = .none
         return cell
     }
     
