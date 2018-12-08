@@ -18,9 +18,6 @@ extension GroceryList {
     }
 
     @NSManaged public var groceryListName: String?
-    @NSManaged public var gramsFat: Float
-    @NSManaged public var gramsCarbs: Float
-    @NSManaged public var gramsProtein: NSObject?
     @NSManaged public var items: NSSet?
 
 }

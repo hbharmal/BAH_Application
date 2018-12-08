@@ -26,18 +26,21 @@ class NutritionData {
     
     func getData (food: String) {
         var urlPath = self.urlPathBase
-        urlPath = urlPath + " " + food
+        urlPath = urlPath + "%20" + food.lowercased()
         print(urlPath)
-        let url:NSURL? = NSURL (string: urlPath)
+        
+        let url:NSURL? = NSURL(string: urlPath)
         
         let dataTask = self.urlSession.dataTask(with: url! as URL) { (data, response,
             error) -> Void in
             if error != nil {
+                print(error)
                 print("Food not valid!")
                 print(urlPath)
             } else {
                 do {
                     var jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
+                    print("WE MADE IT")
                     if jsonResult?.value(forKeyPath: "data.FAT") != nil {
                         var newResult = jsonResult?.value(forKeyPath: "data.FAT")!
                         var second_layer = newResult as! NSArray

@@ -20,6 +20,9 @@ extension Item {
     @NSManaged public var isSelected: Bool
     @NSManaged public var itemCategory: String?
     @NSManaged public var itemName: String?
+    @NSManaged public var gramsProtein: Float
+    @NSManaged public var gramsCarbs: Float
+    @NSManaged public var gramsFat: Float
     @NSManaged public var list: GroceryList?
 
 }

@@ -11,29 +11,34 @@ import Foundation
 import CoreData
 
 class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, NutritioDataProtocol {
+    var item: Item?
     func responseDataHandler(data: NSDictionary) {
-        let fat: Float
-        let carbs: Float
-        let protein: Float
+
+        var fat: Float = 0
+        var carbs: Float = 0
+        var protein: Float = 0
         
         if data.value(forKeyPath: "data.FAT") != nil{
-            var newResult = data.value(forKeyPath: "data.FAT")!
-            var second_layer = newResult as! NSArray
-            var second_layer_dict = second_layer[0]
+            let newResult = data.value(forKeyPath: "data.FAT")!
+            let second_layer = newResult as! NSArray
+            let second_layer_dict = second_layer[0]
             fat = (second_layer_dict as AnyObject).value(forKeyPath: "quantity") as! Float
         }
         if data.value(forKeyPath: "data.PRONCT") != nil{
-            var newResult = data.value(forKeyPath: "data.PROCNT")!
-            var second_layer = newResult as! NSArray
-            var second_layer_dict = second_layer[0]
+            let newResult = data.value(forKeyPath: "data.PROCNT")!
+            let second_layer = newResult as! NSArray
+            let second_layer_dict = second_layer[0]
             protein = (second_layer_dict as AnyObject).value(forKeyPath: "quantity") as! Float
         }
         if data.value(forKeyPath: "data.CHOCDF") != nil{
-            var newResult = data.value(forKeyPath: "data.CHOCDF")!
-            var second_layer = newResult as! NSArray
-            var second_layer_dict = second_layer[0]
+            let newResult = data.value(forKeyPath: "data.CHOCDF")!
+            let second_layer = newResult as! NSArray
+            let second_layer_dict = second_layer[0]
             carbs = (second_layer_dict as AnyObject).value(forKeyPath: "quantity") as! Float
         }
+        item?.gramsFat = fat
+        item?.gramsCarbs = carbs
+        item?.gramsProtein = protein
         
     }
     
@@ -81,6 +86,8 @@ class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
             item.list = self.groceryList
             item.isSelected = false
             
+            self.item = item
+            
             groceryList?.addToItems(item)
             
             do {
@@ -91,7 +98,7 @@ class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
             
             navigationController?.popViewController(animated: true)
             
-            // self.nutritionData.getData(food: item.itemName!)
+            self.nutritionData.getData(food: item.itemName!)
             
         }
     }
@@ -110,6 +117,8 @@ class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         self.categoryLabel.layer.cornerRadius = 15
         self.nameLabel.layer.cornerRadius = 15
+        
+        self.nutritionData.delegate = self as? NutritioDataProtocol
     }
 
     override func didReceiveMemoryWarning() {

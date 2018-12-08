@@ -138,15 +138,23 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         self.carbsLabel.backgroundColor = UIColor.green
         self.fatLabel.backgroundColor = UIColor.red
         
+        var carbs: Float = 0
+        var fat: Float = 0
+        var protein: Float = 0
+        for item in items {
+            carbs += item.gramsCarbs
+            fat += item.gramsFat
+            protein += item.gramsProtein
+        }
         // first check if item list is empty
         if (items.count == 0 || items == nil) {
-            self.proteinLabel.text = "0% Protein"
-            self.carbsLabel.text = "0% Carbs"
-            self.fatLabel.text = "0% Fat"
+            self.proteinLabel.text =  " \(protein) G Protein"
+            self.carbsLabel.text =  " \(carbs) G Carbs"
+            self.fatLabel.text = " \(fat) G Fat"
         } else {
-            self.proteinLabel.text = "0% Protein"
-            self.carbsLabel.text = "0% Carbs"
-            self.fatLabel.text = "0% Fat"
+            self.proteinLabel.text =  " \(protein) G Protein"
+            self.carbsLabel.text = " \(carbs) G Carbs"
+            self.fatLabel.text = " \(fat) G Fat"
         }
         
     }

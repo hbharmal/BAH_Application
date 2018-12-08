@@ -15,11 +15,11 @@
 		820860E7219F8D2700BCAED0 /* BAH_Application.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 820860E5219F8D2700BCAED0 /* BAH_Application.xcdatamodeld */; };
 		820860E9219F8D2800BCAED0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 820860E8219F8D2800BCAED0 /* Assets.xcassets */; };
 		820860EC219F8D2800BCAED0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 820860EA219F8D2800BCAED0 /* LaunchScreen.storyboard */; };
-		825EEDDC21BC5BE7003FE13A /* GroceryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EEDD821BC5BE7003FE13A /* GroceryList.swift */; };
-		825EEDDD21BC5BE7003FE13A /* GroceryList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EEDD921BC5BE7003FE13A /* GroceryList+CoreDataProperties.swift */; };
-		825EEDDE21BC5BE7003FE13A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EEDDA21BC5BE7003FE13A /* Item.swift */; };
-		825EEDDF21BC5BE7003FE13A /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EEDDB21BC5BE7003FE13A /* Item+CoreDataProperties.swift */; };
 		825EEDE121BC5F18003FE13A /* NutritionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EEDE021BC5F18003FE13A /* NutritionData.swift */; };
+		825EEDE721BC77BB003FE13A /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EEDE321BC77BB003FE13A /* Item+CoreDataClass.swift */; };
+		825EEDE821BC77BB003FE13A /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EEDE421BC77BB003FE13A /* Item+CoreDataProperties.swift */; };
+		825EEDE921BC77BB003FE13A /* GroceryList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EEDE521BC77BB003FE13A /* GroceryList+CoreDataClass.swift */; };
+		825EEDEA21BC77BB003FE13A /* GroceryList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EEDE621BC77BB003FE13A /* GroceryList+CoreDataProperties.swift */; };
 		C0795C8821B9CAAB00241ACB /* LogoGraphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0795C8721B9CAAB00241ACB /* LogoGraphic.swift */; };
 		CC0F304621A4E0130099EBBA /* GroceryImages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC0F304521A4E0130099EBBA /* GroceryImages.bundle */; };
 		CC0F306021A69DEE0099EBBA /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F305F21A69DEE0099EBBA /* Globals.swift */; };
@@ -43,11 +43,12 @@
 		820860E8219F8D2800BCAED0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		820860EB219F8D2800BCAED0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		820860ED219F8D2800BCAED0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		825EEDD821BC5BE7003FE13A /* GroceryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryList.swift; sourceTree = "<group>"; };
-		825EEDD921BC5BE7003FE13A /* GroceryList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroceryList+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		825EEDDA21BC5BE7003FE13A /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		825EEDDB21BC5BE7003FE13A /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		825EEDE021BC5F18003FE13A /* NutritionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionData.swift; sourceTree = "<group>"; };
+		825EEDE221BC75D8003FE13A /* austin.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = austin.gpx; sourceTree = "<group>"; };
+		825EEDE321BC77BB003FE13A /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
+		825EEDE421BC77BB003FE13A /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		825EEDE521BC77BB003FE13A /* GroceryList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroceryList+CoreDataClass.swift"; sourceTree = "<group>"; };
+		825EEDE621BC77BB003FE13A /* GroceryList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroceryList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C0795C8721B9CAAB00241ACB /* LogoGraphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoGraphic.swift; sourceTree = "<group>"; };
 		CC0F304521A4E0130099EBBA /* GroceryImages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GroceryImages.bundle; sourceTree = "<group>"; };
 		CC0F305F21A69DEE0099EBBA /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
@@ -90,10 +91,11 @@
 		820860DD219F8D2700BCAED0 /* BAH_Application */ = {
 			isa = PBXGroup;
 			children = (
-				825EEDD821BC5BE7003FE13A /* GroceryList.swift */,
-				825EEDD921BC5BE7003FE13A /* GroceryList+CoreDataProperties.swift */,
-				825EEDDA21BC5BE7003FE13A /* Item.swift */,
-				825EEDDB21BC5BE7003FE13A /* Item+CoreDataProperties.swift */,
+				825EEDE321BC77BB003FE13A /* Item+CoreDataClass.swift */,
+				825EEDE421BC77BB003FE13A /* Item+CoreDataProperties.swift */,
+				825EEDE521BC77BB003FE13A /* GroceryList+CoreDataClass.swift */,
+				825EEDE621BC77BB003FE13A /* GroceryList+CoreDataProperties.swift */,
+				825EEDE221BC75D8003FE13A /* austin.gpx */,
 				C0795C8721B9CAAB00241ACB /* LogoGraphic.swift */,
 				CCA2AA9221B65E7500E61B12 /* AddButton.swift */,
 				820860DE219F8D2700BCAED0 /* AppDelegate.swift */,
@@ -196,24 +198,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				825EEDDE21BC5BE7003FE13A /* Item.swift in Sources */,
 				6027E7EB21A3CAB700887BCB /* AddItemViewController.swift in Sources */,
 				825EEDE121BC5F18003FE13A /* NutritionData.swift in Sources */,
-				825EEDDD21BC5BE7003FE13A /* GroceryList+CoreDataProperties.swift in Sources */,
 				C0795C8821B9CAAB00241ACB /* LogoGraphic.swift in Sources */,
+				825EEDEA21BC77BB003FE13A /* GroceryList+CoreDataProperties.swift in Sources */,
 				820860E1219F8D2700BCAED0 /* MainViewController.swift in Sources */,
 				CC0F306621AA0F7A0099EBBA /* GroceryListTableViewCell.swift in Sources */,
-				825EEDDF21BC5BE7003FE13A /* Item+CoreDataProperties.swift in Sources */,
 				820860E7219F8D2700BCAED0 /* BAH_Application.xcdatamodeld in Sources */,
+				825EEDE721BC77BB003FE13A /* Item+CoreDataClass.swift in Sources */,
 				820860DF219F8D2700BCAED0 /* AppDelegate.swift in Sources */,
 				CC9F24DA21A399A8002D5240 /* GroceryImagesCollectionViewCell.swift in Sources */,
 				CC0F306221A6A1400099EBBA /* CustomItemViewController.swift in Sources */,
 				CC0F306421AA09670099EBBA /* GroceryListViewController.swift in Sources */,
+				825EEDE921BC77BB003FE13A /* GroceryList+CoreDataClass.swift in Sources */,
 				CCF8324121B4C4D70012026F /* GroceryItemTableViewCell.swift in Sources */,
 				CCA2AA9521B79D0A00E61B12 /* NutritionsAPI.swift in Sources */,
-				825EEDDC21BC5BE7003FE13A /* GroceryList.swift in Sources */,
 				CC0F306021A69DEE0099EBBA /* Globals.swift in Sources */,
 				60BAA36E21AA4FB40049DC25 /* MapViewController.swift in Sources */,
+				825EEDE821BC77BB003FE13A /* Item+CoreDataProperties.swift in Sources */,
 				CCA2AA9321B65E7500E61B12 /* AddButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
