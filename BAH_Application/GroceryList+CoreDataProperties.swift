@@ -2,7 +2,7 @@
 //  GroceryList+CoreDataProperties.swift
 //  BAH_Application
 //
-//  Created by Hussain Bharmal on 12/3/18.
+//  Created by Vadrevu, Anirudh S on 12/8/18.
 //  Copyright © 2018 BAH. All rights reserved.
 //
 //
@@ -18,6 +18,9 @@ extension GroceryList {
     }
 
     @NSManaged public var groceryListName: String?
+    @NSManaged public var gramsFat: Float
+    @NSManaged public var gramsCarbs: Float
+    @NSManaged public var gramsProtein: NSObject?
     @NSManaged public var items: NSSet?
 
 }

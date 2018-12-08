@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1510" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G3025" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="GroceryList" representedClassName="GroceryList" syncable="YES">
+        <attribute name="gramsCarbs" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="gramsFat" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="gramsProtein" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="groceryListName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="items" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="list" inverseEntity="Item" syncable="YES"/>
     </entity>
@@ -11,7 +14,7 @@
         <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroceryList" inverseName="items" inverseEntity="GroceryList" syncable="YES"/>
     </entity>
     <elements>
-        <element name="GroceryList" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="GroceryList" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="Item" positionX="-63" positionY="-9" width="128" height="105"/>
     </elements>
 </model>

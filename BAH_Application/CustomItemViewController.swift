@@ -10,7 +10,42 @@ import UIKit
 import Foundation
 import CoreData
 
-class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, NutritioDataProtocol {
+    func responseDataHandler(data: NSDictionary) {
+        let fat: Float
+        let carbs: Float
+        let protein: Float
+        
+        if data.value(forKeyPath: "data.FAT") != nil{
+            var newResult = data.value(forKeyPath: "data.FAT")!
+            var second_layer = newResult as! NSArray
+            var second_layer_dict = second_layer[0]
+            fat = (second_layer_dict as AnyObject).value(forKeyPath: "quantity") as! Float
+        }
+        if data.value(forKeyPath: "data.PRONCT") != nil{
+            var newResult = data.value(forKeyPath: "data.PROCNT")!
+            var second_layer = newResult as! NSArray
+            var second_layer_dict = second_layer[0]
+            protein = (second_layer_dict as AnyObject).value(forKeyPath: "quantity") as! Float
+        }
+        if data.value(forKeyPath: "data.CHOCDF") != nil{
+            var newResult = data.value(forKeyPath: "data.CHOCDF")!
+            var second_layer = newResult as! NSArray
+            var second_layer_dict = second_layer[0]
+            carbs = (second_layer_dict as AnyObject).value(forKeyPath: "quantity") as! Float
+        }
+        
+    }
+    
+    
+    func responseError(message: String) {
+        DispatchQueue.main.async {
+            print("Error")
+        }
+    }
+    
+    
+    var nutritionData = NutritionData()
     
     var groceryList: GroceryList?
     var selectedCatagory: String?
@@ -55,6 +90,9 @@ class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
             }
             
             navigationController?.popViewController(animated: true)
+            
+            // self.nutritionData.getData(food: item.itemName!)
+            
         }
     }
     
