@@ -14,12 +14,11 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     var items: [Item] = []
     let identifier = "itemCell"
     let cellSpacingHeight: CGFloat = 5
+    var titles: [String] = []
+    var urls: [String] = []
 
     @IBOutlet weak var groceryTitleLabel: UILabel!
     @IBOutlet weak var groceryItemsTableView: UITableView!
-    @IBOutlet weak var proteinLabel: UILabel!
-    @IBOutlet weak var carbsLabel: UILabel!
-    @IBOutlet weak var fatLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +26,7 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         groceryTitleLabel.text = (groceryList?.groceryListName)! + " List"
         groceryTitleLabel.baselineAdjustment = .alignCenters
         
-        self.createNutritionLabels()
+//        self.createNutritionLabels()
         
     }
 
@@ -132,31 +131,31 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    // MARK: - Nutrition Labels
-    func createNutritionLabels() {
-        self.proteinLabel.backgroundColor = UIColor.blue
-        self.carbsLabel.backgroundColor = UIColor.green
-        self.fatLabel.backgroundColor = UIColor.red
-        
-        var carbs: Float = 0
-        var fat: Float = 0
-        var protein: Float = 0
-        for item in items {
-            carbs += item.gramsCarbs
-            fat += item.gramsFat
-            protein += item.gramsProtein
-        }
-        // first check if item list is empty
-        if (items.count == 0 || items == nil) {
-            self.proteinLabel.text =  " \(protein) G Protein"
-            self.carbsLabel.text =  " \(carbs) G Carbs"
-            self.fatLabel.text = " \(fat) G Fat"
-        } else {
-            self.proteinLabel.text =  " \(protein) G Protein"
-            self.carbsLabel.text = " \(carbs) G Carbs"
-            self.fatLabel.text = " \(fat) G Fat"
-        }
-        
-    }
+//    // MARK: - Nutrition Labels
+//    func createNutritionLabels() {
+//        self.proteinLabel.backgroundColor = UIColor.blue
+//        self.carbsLabel.backgroundColor = UIColor.green
+//        self.fatLabel.backgroundColor = UIColor.red
+//
+//        var carbs: Float = 0
+//        var fat: Float = 0
+//        var protein: Float = 0
+//        for item in items {
+//            carbs += item.gramsCarbs
+//            fat += item.gramsFat
+//            protein += item.gramsProtein
+//        }
+//        // first check if item list is empty
+//        if (items.count == 0 || items == nil) {
+//            self.proteinLabel.text =  " \(protein) G Protein"
+//            self.carbsLabel.text =  " \(carbs) G Carbs"
+//            self.fatLabel.text = " \(fat) G Fat"
+//        } else {
+//            self.proteinLabel.text =  " \(protein) G Protein"
+//            self.carbsLabel.text = " \(carbs) G Carbs"
+//            self.fatLabel.text = " \(fat) G Fat"
+//        }
+//
+//    }
 
 }
