@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Foundation
+import CoreData
 
-class GroceryListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+class GroceryListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,NutritioDataProtocol {
     
     var groceryList: GroceryList?
     var items: [Item] = []
@@ -16,19 +19,76 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     let cellSpacingHeight: CGFloat = 5
     var titles: [String] = []
     var urls: [String] = []
-
-    @IBOutlet weak var groceryTitleLabel: UILabel!
-    @IBOutlet weak var groceryItemsTableView: UITableView!
+    var nutritionData = NutritionData()
+    var count: Int32 = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         groceryTitleLabel.text = (groceryList?.groceryListName)! + " List"
         groceryTitleLabel.baselineAdjustment = .alignCenters
-        
-//        self.createNutritionLabels()
+        self.nutritionData.delegate = self
+        //        self.createNutritionLabels()
         
     }
+
+    func responseDataHandler(data: NSDictionary) {
+        print("Hello world")
+        self.count = (data.value(forKeyPath: "count")! as? Int32)!
+        if self.count >= 5 {
+            let newResult = data.value(forKeyPath: "recipes")!
+            for i in 1...5 {
+                let second_layer = newResult as! NSArray
+                let second_layer_dict = second_layer[i-1] as! NSDictionary
+                let name = second_layer_dict.value(forKeyPath: "title") as! String
+                self.titles.append(name)
+                let url = second_layer_dict.value(forKeyPath: "source_url") as! String
+                self.urls.append(url)
+                print(name)
+                print(url)
+            }
+        }
+        else if self.self.count > 0 {
+            let newResult = data.value(forKeyPath: "recipes")!
+            for i in 1...self.count {
+                let second_layer = newResult as! NSArray
+                let second_layer_dict = second_layer[Int(i)-1] as! NSDictionary
+                let name = second_layer_dict.value(forKeyPath: "title") as! String
+                self.titles.append(name)
+                let url = second_layer_dict.value(forKeyPath: "source_url") as! String
+                self.urls.append(url)
+                print(name)
+                print(url)
+            }
+        }
+        else {
+            self.titles.append("No recipes can be found.")
+            self.urls.append("Please enter a different list of ingredients and try again, or feel free to make something of your own!")
+        }
+    }
+    
+    
+    func responseError(message: String) {
+        DispatchQueue.main.async {
+            print("Error")
+        }
+    }
+    
+    
+    @IBOutlet weak var groceryTitleLabel: UILabel!
+    @IBOutlet weak var groceryItemsTableView: UITableView!
+    
+    @IBAction func getRecipes(_ sender: UIButton) {
+        let group = DispatchGroup()
+        group.enter()
+        self.nutritionData.getData(foods: self.items)
+        group.leave()
+        group.notify(queue: .main) {
+            print(self.titles)
+        }
+    }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -74,6 +134,11 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationController = segue.destination as? AddItemViewController {
             destinationController.groceryList = self.groceryList
+        }
+        
+        if let destinationController = segue.destination as? RecipeTableViewController {
+            destinationController.urls = self.urls
+            destinationController.titles = self.titles 
         }
     }
     

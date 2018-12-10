@@ -327,6 +327,7 @@
                                 </constraints>
                                 <state key="normal" title="Get Recipes"/>
                                 <connections>
+                                    <action selector="getRecipes:" destination="TgT-mB-Bdi" eventType="touchUpInside" id="6Ff-ix-GS1"/>
                                     <segue destination="HWF-1U-X17" kind="push" id="TST-4t-seP"/>
                                 </connections>
                             </button>
@@ -485,16 +486,16 @@
             </objects>
             <point key="canvasLocation" x="2720.8000000000002" y="435.83208395802103"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Recipe Table View Controller-->
         <scene sceneID="JaJ-FO-Ajv">
             <objects>
-                <tableViewController id="HWF-1U-X17" sceneMemberID="viewController">
+                <tableViewController id="HWF-1U-X17" customClass="RecipeTableViewController" customModule="BAH_Application" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="n3X-TX-XUU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="X4n-MX-nA1" detailTextLabel="nEV-md-tGl" style="IBUITableViewCellStyleSubtitle" id="0IN-VD-Ygf">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="X4n-MX-nA1" detailTextLabel="nEV-md-tGl" style="IBUITableViewCellStyleSubtitle" id="0IN-VD-Ygf">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0IN-VD-Ygf" id="1mW-80-fMq">
@@ -525,6 +526,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="wS0-MZ-QqE"/>
+                    <connections>
+                        <outlet property="myTableView" destination="n3X-TX-XUU" id="aGT-85-k7m"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XjU-rU-fuj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

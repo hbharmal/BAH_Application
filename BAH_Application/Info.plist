@@ -4,6 +4,20 @@
 <dict>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>www.food2fork.com</key>
+			<dict>
+				<key>ExceptionRequiresForwardSecrecy</key>
+				<false/>
+				<key>TemporaryExceptionMinimumTLSVersion</key>
+				<string>TLSv1.1</string>
+				<key>TemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>IncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
 		<key>NSAllowsArbitraryLoadsInWebContent</key>
 		<true/>
 		<key>NSAllowsArbitraryLoads</key>

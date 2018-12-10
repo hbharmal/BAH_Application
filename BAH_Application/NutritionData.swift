@@ -5,7 +5,6 @@
 //  Created by Vadrevu, Anirudh S on 12/8/18.
 //  Copyright © 2018 BAH. All rights reserved.
 //
-import UIKit
 import Foundation
 
 protocol NutritioDataProtocol {
@@ -15,70 +14,90 @@ protocol NutritioDataProtocol {
 
 class NutritionData {
     private let urlSession = URLSession.shared
-    private let urlPathBase = "https://api.edamam.com/api/nutrition-data?app_id=9e55fd5e&app_key=68ea629e8ec61c91c87db794927623fd&ingr=one"
+    private let urlPathBase = "https://www.food2fork.com/api/search?key=c3a7eca4aba7737ced391e4956685bfd&q="
     
     private var dataTask: URLSessionDataTask? = nil
     var delegate: NutritioDataProtocol? = nil
+
     
-    var BoolFat: Bool = false
-    var BoolCarbs: Bool = false
-    var BoolProtein: Bool = false
-    
-    func getData (food: String) {
+    func getData (foods: [Item]) {
         var urlPath = self.urlPathBase
-        urlPath = urlPath + "%20" + food.lowercased()
+        var list: [String] = []
+        //let split = food.components(separatedBy: " ")
+        // have to put all items in the grocery list into a list, then for each of those items, split them based on " ", and for the length of that list, create variables, and then put them into the url
+        for item in foods {
+            list.append(item.itemName!)
+        }
+        for thing in list {
+            let split = thing.components(separatedBy: " ")
+            for things in split {
+                urlPath = urlPath + things + "%20"
+            }
+        }
         print(urlPath)
         
+        var count: Int32 = 0
         let url:NSURL? = NSURL(string: urlPath)
         
+        print("about to try this")
         let dataTask = self.urlSession.dataTask(with: url! as URL) { (data, response,
             error) -> Void in
+            //print("DATA: ")
+            //print(data)
+            //print("RESPONSE:")
+            //print(response)
+            //print("ERROR: ")
+            //print(error)
             if error != nil {
                 print(error)
                 print("Food not valid!")
-                print(urlPath)
+                //print(urlPath)
             } else {
                 do {
                     var jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
-                    print("WE MADE IT")
-                    if jsonResult?.value(forKeyPath: "data.FAT") != nil {
-                        var newResult = jsonResult?.value(forKeyPath: "data.FAT")!
-                        var second_layer = newResult as! NSArray
-                        var second_layer_dict = second_layer[0] as! NSDictionary
-                        let Fat = second_layer_dict.value(forKeyPath: "quantity") as! String
-                        self.BoolFat = true
-                        print(Fat)
-                    }
-
-                    if jsonResult?.value(forKeyPath: "data.PROCNT") != nil {
-                        var newResult = jsonResult?.value(forKeyPath: "data.PROCNT")!
-                        var second_layer = newResult as! NSArray
-                        var second_layer_dict = second_layer[0] as! NSDictionary
-                        let Protein = second_layer_dict.value(forKeyPath: "quantity") as! String
-                        self.BoolProtein = true
-                        print(Protein)
-                    }
-
-                    if jsonResult?.value(forKeyPath: "data.CHOCDF") != nil {
-                        var newResult = jsonResult?.value(forKeyPath: "data.CHOCDF")
-                        var second_layer = newResult as! NSArray
-                        var second_layer_dict = second_layer[0] as! NSDictionary
-                        let Carbs = second_layer_dict.value(forKeyPath: "quantity") as! String
-                        self.BoolCarbs = true
-                        print(Carbs)
-                    }
-                    if self.BoolCarbs == true && self.BoolProtein == true && self.BoolFat == true {
-                        self.delegate?.responseDataHandler(data: jsonResult!)
-                    }
+                    //print(jsonResult)
+                    if jsonResult?.value(forKeyPath: "count") != nil {
+                        count = (jsonResult?.value(forKeyPath: "count")! as? Int32)!
+                        //print(count)
+                        if count >= 5 {
+                            var newResult = jsonResult?.value(forKeyPath: "recipes")!
+                            for i in 1...5 {
+                                var second_layer = newResult as! NSArray
+                                var second_layer_dict = second_layer[i-1] as! NSDictionary
+                                let name = second_layer_dict.value(forKeyPath: "title") as! String
+                                //print(name)
+                                let url = second_layer_dict.value(forKeyPath: "source_url") as! String
+                                //print(url)
+                            }
+                            print("About to do this now")
+                            self.delegate?.responseDataHandler(data: jsonResult!)
+                        }
+                        else if count > 0 {
+                            var newResult = jsonResult?.value(forKeyPath: "recipes")!
+                            for i in 1...count {
+                                var second_layer = newResult as! NSArray
+                                var second_layer_dict = second_layer[Int(i)-1] as! NSDictionary
+                                let name = second_layer_dict.value(forKeyPath: "title") as! String
+                                //print(name)
+                                let url = second_layer_dict.value(forKeyPath: "source_url") as! String
+                                //print(url)
+                            }
+                           self.delegate?.responseDataHandler(data: jsonResult!)
+                        }
+                        else {
+                                print("No recipes found")
+                                self.delegate?.responseDataHandler(data: jsonResult!)
+                            }
+                        }
                     else{
-                        self.delegate?.responseError(message: "Nurtional information not found!")
-                        print("Nutritional information not found!")
+                        self.delegate?.responseError(message: "No recipes found!")
+                        print("No recipes found!")
                     }
                 } catch {
                     // Catch and handle the exception
                 }
         }
     }
-        dataTask.resume()
+    dataTask.resume()
 }
 }
