@@ -21,7 +21,7 @@
 		825EEDE821BC77BB003FE13A /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EEDE421BC77BB003FE13A /* Item+CoreDataProperties.swift */; };
 		825EEDE921BC77BB003FE13A /* GroceryList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EEDE521BC77BB003FE13A /* GroceryList+CoreDataClass.swift */; };
 		825EEDEA21BC77BB003FE13A /* GroceryList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EEDE621BC77BB003FE13A /* GroceryList+CoreDataProperties.swift */; };
-		C0535EA221BDF782005E8ECC /* GroceryImages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C0535EA121BDF782005E8ECC /* GroceryImages.bundle */; };
+		82E8917621BDFD2E008E0343 /* GroceryImages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 82E8917521BDFD2E008E0343 /* GroceryImages.bundle */; };
 		C0795C8821B9CAAB00241ACB /* LogoGraphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0795C8721B9CAAB00241ACB /* LogoGraphic.swift */; };
 		CC0F306021A69DEE0099EBBA /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F305F21A69DEE0099EBBA /* Globals.swift */; };
 		CC0F306221A6A1400099EBBA /* CustomItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F306121A6A1400099EBBA /* CustomItemViewController.swift */; };
@@ -51,7 +51,7 @@
 		825EEDE421BC77BB003FE13A /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		825EEDE521BC77BB003FE13A /* GroceryList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroceryList+CoreDataClass.swift"; sourceTree = "<group>"; };
 		825EEDE621BC77BB003FE13A /* GroceryList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroceryList+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		C0535EA121BDF782005E8ECC /* GroceryImages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GroceryImages.bundle; path = ../../GroceryImages.bundle; sourceTree = "<group>"; };
+		82E8917521BDFD2E008E0343 /* GroceryImages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GroceryImages.bundle; sourceTree = "<group>"; };
 		C0795C8721B9CAAB00241ACB /* LogoGraphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoGraphic.swift; sourceTree = "<group>"; };
 		CC0F305F21A69DEE0099EBBA /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		CC0F306121A6A1400099EBBA /* CustomItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomItemViewController.swift; sourceTree = "<group>"; };
@@ -105,9 +105,9 @@
 				820860E2219F8D2700BCAED0 /* Main.storyboard */,
 				CC0F306121A6A1400099EBBA /* CustomItemViewController.swift */,
 				825EEDE021BC5F18003FE13A /* NutritionData.swift */,
+				82E8917521BDFD2E008E0343 /* GroceryImages.bundle */,
 				60BAA36D21AA4FB40049DC25 /* MapViewController.swift */,
 				820860E8219F8D2800BCAED0 /* Assets.xcassets */,
-				C0535EA121BDF782005E8ECC /* GroceryImages.bundle */,
 				820860ED219F8D2800BCAED0 /* Info.plist */,
 				820860E5219F8D2700BCAED0 /* BAH_Application.xcdatamodeld */,
 				60D2F22921BDC744000E9DC1 /* LaunchScreen.storyboard */,
@@ -188,7 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60D2F22B21BDC744000E9DC1 /* LaunchScreen.storyboard in Resources */,
-				C0535EA221BDF782005E8ECC /* GroceryImages.bundle in Resources */,
+				82E8917621BDFD2E008E0343 /* GroceryImages.bundle in Resources */,
 				820860E9219F8D2800BCAED0 /* Assets.xcassets in Resources */,
 				820860E4219F8D2700BCAED0 /* Main.storyboard in Resources */,
 			);
