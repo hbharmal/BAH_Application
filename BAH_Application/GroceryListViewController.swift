@@ -21,6 +21,7 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     var urls: [String] = []
     var nutritionData = NutritionData()
     var count: Int32 = 0
+    var counts: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -176,7 +177,26 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 71
     }
-    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            let del_adv = items[indexPath.row]
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let managedContext = appDelegate.managedObjectContext
+            managedContext.delete(del_adv)
+            
+            do {
+                try managedContext.save()
+                print("Saved")
+                
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+            tableView.reloadData()
+        }
+    }
     // MARK: - Objc function
     @objc func checkMarkButtonClicked(sender: UIButton) {
         if (sender.isSelected) {

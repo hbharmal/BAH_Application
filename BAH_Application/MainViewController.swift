@@ -131,7 +131,26 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            let del_adv = groceryLists[indexPath.row]
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let managedContext = appDelegate.managedObjectContext
+            managedContext.delete(del_adv)
+            
+            do {
+                try managedContext.save()
+                print("Saved")
+                
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+            tableView.reloadData()
+        }
+    }
 
 }
 
