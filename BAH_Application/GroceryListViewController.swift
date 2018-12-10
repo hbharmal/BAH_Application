@@ -45,8 +45,6 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
                 self.titles.append(name)
                 let url = second_layer_dict.value(forKeyPath: "source_url") as! String
                 self.urls.append(url)
-                print(name)
-                print(url)
             }
         }
         else if self.self.count > 0 {
@@ -58,8 +56,6 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
                 self.titles.append(name)
                 let url = second_layer_dict.value(forKeyPath: "source_url") as! String
                 self.urls.append(url)
-                print(name)
-                print(url)
             }
         }
         else {
@@ -89,8 +85,6 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -105,9 +99,6 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.setToolbarHidden(false, animated: true)
         self.groceryItemsTableView.reloadData()
-        for item in items {
-            print(item.isSelected)
-        }
     }
     
     // MARK: - Scroll View
@@ -149,7 +140,7 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return items.count
+        return (self.groceryList?.items!.count)!
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -177,12 +168,14 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 71
     }
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            let del_adv = items[indexPath.row]
+            let del_adv = items[indexPath.section]
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext
             managedContext.delete(del_adv)
@@ -194,9 +187,13 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
             } catch let error as NSError {
                 print("Could not fetch. \(error), \(error.userInfo)")
             }
-            tableView.reloadData()
+            let indexSet: IndexSet = [indexPath.section]
+            self.groceryItemsTableView.deleteSections(indexSet, with: .automatic)
+            self.items.remove(at: indexPath.section)
+            self.groceryItemsTableView.reloadData()
         }
     }
+    
     // MARK: - Objc function
     @objc func checkMarkButtonClicked(sender: UIButton) {
         if (sender.isSelected) {

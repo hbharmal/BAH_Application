@@ -13,6 +13,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var groceryLists =  [GroceryList]()
     var sugueList: GroceryList?
+    var count = 0
 
     @IBOutlet weak var groceryListTextField: UITextField!
     @IBOutlet weak var groceryListTableView: UITableView!
@@ -37,6 +38,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if self.groceryListTextField.text != "" {
             groceryList.groceryListName = groceryListTextField.text
+            count += 1
         } else { return }
         
         do {
@@ -67,7 +69,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "GroceryList")
         
         do {
-            if let results = try managedObjectContext.fetch(fetchRequest) as? [GroceryList] { groceryLists = results }
+            if let results = try managedObjectContext.fetch(fetchRequest) as? [GroceryList] { 
+                groceryLists = results
+                count = results.count
+            }
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -104,7 +109,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return groceryLists.count
+        return self.count 
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -134,9 +139,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            let del_adv = groceryLists[indexPath.row]
+            let del_adv = groceryLists[indexPath.section]
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext
             managedContext.delete(del_adv)
@@ -148,6 +154,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             } catch let error as NSError {
                 print("Could not fetch. \(error), \(error.userInfo)")
             }
+            let indexSet: IndexSet = [indexPath.section]
+            self.count -= 1
+            self.groceryListTableView.deleteSections(indexSet, with: .automatic)
+            self.groceryLists.remove(at: indexPath.section)
             tableView.reloadData()
         }
     }
