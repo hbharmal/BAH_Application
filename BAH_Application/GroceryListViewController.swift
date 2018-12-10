@@ -11,16 +11,12 @@ import Foundation
 import CoreData
 
 
-class GroceryListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,NutritioDataProtocol {
+class GroceryListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var groceryList: GroceryList?
     var items: [Item] = []
     let identifier = "itemCell"
     let cellSpacingHeight: CGFloat = 5
-    var titles: [String] = []
-    var urls: [String] = []
-    var nutritionData = NutritionData()
-    var count: Int32 = 0
     var counts: Int = 0
     
     override func viewDidLoad() {
@@ -28,65 +24,17 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
         groceryTitleLabel.text = (groceryList?.groceryListName)! + " List"
         groceryTitleLabel.baselineAdjustment = .alignCenters
-        self.nutritionData.delegate = self
         //        self.createNutritionLabels()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.setToolbarHidden(false, animated: true)
         
-    }
-
-    func responseDataHandler(data: NSDictionary) {
-        print("Hello world")
-        titles.removeAll()
-        urls.removeAll()
-        self.count = (data.value(forKeyPath: "count")! as? Int32)!
-        if self.count >= 5 {
-            let newResult = data.value(forKeyPath: "recipes")!
-            for i in 1...5 {
-                let second_layer = newResult as! NSArray
-                let second_layer_dict = second_layer[i-1] as! NSDictionary
-                let name = second_layer_dict.value(forKeyPath: "title") as! String
-                self.titles.append(name)
-                let url = second_layer_dict.value(forKeyPath: "source_url") as! String
-                self.urls.append(url)
-            }
-        }
-        else if self.self.count > 0 {
-            let newResult = data.value(forKeyPath: "recipes")!
-            for i in 1...self.count {
-                let second_layer = newResult as! NSArray
-                let second_layer_dict = second_layer[Int(i)-1] as! NSDictionary
-                let name = second_layer_dict.value(forKeyPath: "title") as! String
-                self.titles.append(name)
-                let url = second_layer_dict.value(forKeyPath: "source_url") as! String
-                self.urls.append(url)
-            }
-        }
-        else {
-            self.titles.append("No recipes can be found.")
-            self.urls.append("Please enter a different list of ingredients and try again, or feel free to make something of your own!")
-        }
-    }
-    
-    
-    func responseError(message: String) {
-        DispatchQueue.main.async {
-            print("Error")
-        }
-    }
-    
+    }    
     
     @IBOutlet weak var groceryTitleLabel: UILabel!
     @IBOutlet weak var groceryItemsTableView: UITableView!
     
     @IBAction func getRecipes(_ sender: UIButton) {
-        let group = DispatchGroup()
-        group.enter()
-//        titles.removeAll()
-//        urls.removeAll()
-        self.nutritionData.getData(foods: self.items)
-        group.leave()
-        group.notify(queue: .main) {
-            print(self.titles)
-        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -102,6 +50,7 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         }
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.setToolbarHidden(false, animated: true)
+        self.navigationController?.isNavigationBarHidden = false
         self.groceryItemsTableView.reloadData()
     }
     
@@ -133,8 +82,7 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         if let destinationController = segue.destination as? RecipeTableViewController {
-            destinationController.urls = self.urls
-            destinationController.titles = self.titles 
+            destinationController.items = self.items
         }
     }
     

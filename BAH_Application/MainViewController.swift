@@ -48,9 +48,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("Could not save. \(error), \(error.userInfo)")
         }
         
-//        self.groceryListTableView.beginUpdates()
-//        self.groceryListTableView.insertRows(at: [IndexPath(row: 0, section: groceryLists.count - 1)], with: .automatic)
-//        self.groceryListTableView.endUpdates()
+
         self.groceryListTableView.reloadData()
         self.groceryListTextField.text = ""
         view.endEditing(true)
@@ -140,10 +138,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         groceryListTextField.resignFirstResponder()
         return true
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             let del_adv = groceryLists[indexPath.section]

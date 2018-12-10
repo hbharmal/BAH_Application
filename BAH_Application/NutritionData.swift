@@ -14,8 +14,10 @@ protocol NutritioDataProtocol {
 
 class NutritionData {
     private let urlSession = URLSession.shared
-    private let urlPathBase = "https://www.food2fork.com/api/search?key=c3a7eca4aba7737ced391e4956685bfd&q="
+    private let urlPathBase = "https://www.food2fork.com/api/search?key=5a47c0ffda60a9ea47c3374973c8ebf3&q="
     
+    // if that api doesn't work, use this: 5a47c0ffda60a9ea47c3374973c8ebf3
+    //
     private var dataTask: URLSessionDataTask? = nil
     var delegate: NutritioDataProtocol? = nil
 
@@ -54,50 +56,48 @@ class NutritionData {
                 //print(urlPath)
             } else {
                 do {
-                    var jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
+                    let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
                     //print(jsonResult)
                     if jsonResult?.value(forKeyPath: "count") != nil {
                         count = (jsonResult?.value(forKeyPath: "count")! as? Int32)!
                         //print(count)
                         if count >= 5 {
-                            var newResult = jsonResult?.value(forKeyPath: "recipes")!
+                            let newResult = jsonResult?.value(forKeyPath: "recipes")!
                             for i in 1...5 {
-                                var second_layer = newResult as! NSArray
-                                var second_layer_dict = second_layer[i-1] as! NSDictionary
-                                let name = second_layer_dict.value(forKeyPath: "title") as! String
+                                let second_layer = newResult as! NSArray
+                                let second_layer_dict = second_layer[i-1] as! NSDictionary
+                                _ = second_layer_dict.value(forKeyPath: "title") as! String
                                 //print(name)
-                                let url = second_layer_dict.value(forKeyPath: "source_url") as! String
+                                _ = second_layer_dict.value(forKeyPath: "source_url") as! String
                                 //print(url)
                             }
                             print("About to do this now")
                             self.delegate?.responseDataHandler(data: jsonResult!)
                         }
                         else if count > 0 {
-                            var newResult = jsonResult?.value(forKeyPath: "recipes")!
+                            let newResult = jsonResult?.value(forKeyPath: "recipes")!
                             for i in 1...count {
-                                var second_layer = newResult as! NSArray
-                                var second_layer_dict = second_layer[Int(i)-1] as! NSDictionary
-                                let name = second_layer_dict.value(forKeyPath: "title") as! String
+                                let second_layer = newResult as! NSArray
+                                let second_layer_dict = second_layer[Int(i)-1] as! NSDictionary
+                                _ = second_layer_dict.value(forKeyPath: "title") as! String
                                 //print(name)
-                                let url = second_layer_dict.value(forKeyPath: "source_url") as! String
+                                _ = second_layer_dict.value(forKeyPath: "source_url") as! String
                                 //print(url)
                             }
                            self.delegate?.responseDataHandler(data: jsonResult!)
-                        }
-                        else {
+                        } else {
                                 print("No recipes found")
                                 self.delegate?.responseDataHandler(data: jsonResult!)
                             }
-                        }
-                    else{
+                    } else {
                         self.delegate?.responseError(message: "No recipes found!")
                         print("No recipes found!")
                     }
                 } catch {
                     // Catch and handle the exception
                 }
+            }
         }
+        dataTask.resume()
     }
-    dataTask.resume()
-}
 }

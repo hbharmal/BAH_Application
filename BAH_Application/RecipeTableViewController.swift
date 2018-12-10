@@ -8,26 +8,27 @@
 
 import UIKit
 
-class RecipeTableViewController: UITableViewController {
+class RecipeTableViewController: UITableViewController, NutritioDataProtocol {
     
-    var urls: [String] = []
     var titles: [String] = []
-
+    var urls: [String] = []
+    var nutritionData = NutritionData()
+    var items: [Item] = []
+    var count: Int32 = 0
 
     @IBOutlet var myTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.nutritionData.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        print("ON THIS PART NOW")
-        for item in titles {
-            print(item)
-        }
+        self.nutritionData.getData(foods: self.items)
         
     }
     
@@ -114,5 +115,50 @@ class RecipeTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - API Functionality
+    
+    func responseDataHandler(data: NSDictionary) {
+        titles.removeAll()
+        urls.removeAll()
+        self.count = (data.value(forKeyPath: "count")! as? Int32)!
+        if self.count >= 5 {
+            let newResult = data.value(forKeyPath: "recipes")!
+            for i in 1...5 {
+                let second_layer = newResult as! NSArray
+                let second_layer_dict = second_layer[i-1] as! NSDictionary
+                let name = second_layer_dict.value(forKeyPath: "title") as! String
+                self.titles.append(name)
+                let url = second_layer_dict.value(forKeyPath: "source_url") as! String
+                self.urls.append(url)
+            }
+        }
+        else if self.self.count > 0 {
+            let newResult = data.value(forKeyPath: "recipes")!
+            for i in 1...self.count {
+                let second_layer = newResult as! NSArray
+                let second_layer_dict = second_layer[Int(i)-1] as! NSDictionary
+                let name = second_layer_dict.value(forKeyPath: "title") as! String
+                self.titles.append(name)
+                let url = second_layer_dict.value(forKeyPath: "source_url") as! String
+                self.urls.append(url)
+            }
+        }
+        else {
+            self.titles.append("No recipes can be found.")
+            self.urls.append("Please enter a different list of ingredients and try again, or feel free to make something of your own!")
+        }
+        DispatchQueue.main.async {
+            self.myTableView.reloadData()
+        }
+    }
+    
+    
+    func responseError(message: String) {
+        DispatchQueue.main.async {
+            print("Error")
+        }
+    }
+
 
 }
