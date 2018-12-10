@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import CoreData
 
-class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     var item: Item?
 //    func responseDataHandler(data: NSDictionary) {
 //
@@ -118,14 +118,26 @@ class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
         self.categoryLabel.layer.cornerRadius = 15
         self.nameLabel.layer.cornerRadius = 15
         
+        nameTextField.delegate = self
+        // listen for keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(CustomItemViewController.keyboardDidChange(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CustomItemViewController.keyboardDidChange(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CustomItemViewController.keyboardDidChange(notification:)), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
 //        self.nutritionData.delegate = self as? NutritioDataProtocol
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTextField.resignFirstResponder()
+        return true
+    }
     // MARK: - Navigation
 
 //     In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -155,6 +167,23 @@ class CustomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
         selectedCatagory = categories[row]
     }
     
+    @objc func keyboardDidChange(notification: Notification){
+        print("keyboard did change")
+        
+        // Actual keyboar height
+        guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        
+        // show or hide
+        if notification.name == Notification.Name.UIKeyboardWillShow ||
+            notification.name == Notification.Name.UIKeyboardWillChangeFrame {
+            view.frame.origin.y = -keyboardRect.height
+            
+        } else {
+            view.frame.origin.y = 0
+        }
+    }
 //    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
 //        let label = UILabel(frame: CGRect(x: 0, y: 0, width: pickerView.rowSize(forComponent: component).width, height: pickerView.rowSize(forComponent: component).height))
 //        label.textAlignment = .center

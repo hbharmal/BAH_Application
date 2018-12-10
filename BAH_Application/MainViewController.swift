@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     var groceryLists =  [GroceryList]()
     var sugueList: GroceryList?
@@ -61,6 +61,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.title = "My Grocery Lists"
+        groceryListTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -139,7 +140,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        groceryListTextField.resignFirstResponder()
+        return true
+    }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             let del_adv = groceryLists[indexPath.section]

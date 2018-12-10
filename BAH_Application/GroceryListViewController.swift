@@ -35,6 +35,8 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
 
     func responseDataHandler(data: NSDictionary) {
         print("Hello world")
+        titles.removeAll()
+        urls.removeAll()
         self.count = (data.value(forKeyPath: "count")! as? Int32)!
         if self.count >= 5 {
             let newResult = data.value(forKeyPath: "recipes")!
@@ -78,6 +80,8 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func getRecipes(_ sender: UIButton) {
         let group = DispatchGroup()
         group.enter()
+//        titles.removeAll()
+//        urls.removeAll()
         self.nutritionData.getData(foods: self.items)
         group.leave()
         group.notify(queue: .main) {
